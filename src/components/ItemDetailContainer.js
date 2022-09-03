@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import ItemDetail from './ItemDetail'
 import dataProductos from '../data/dataProductos';
 
-ItemDetailContainer = () => {
+function ItemDetailContainer () {
 const [productos, setProductos] = useState({})
 
     const getProdData = () => new Promise((resolve) => {
@@ -15,7 +15,7 @@ const [productos, setProductos] = useState({})
    },[])
 
   return (
-    <div><ItemDetail producto={productos}/>
+    <div className='flex justify-center' ><ItemDetail producto={productos}/>
     </div>
   )
 }

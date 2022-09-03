@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import dataProductos from '../data/dataProductos';
-import ItemCount from './ItemCount'
 import ItemList from './ItemList';
 
 
@@ -30,7 +29,6 @@ const ItemListContainer = (props) => {
 
     
     
-    <ItemCount initial={1} stock={5}/>
     </div>
   )
 }

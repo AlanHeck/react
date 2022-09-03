@@ -16,7 +16,7 @@ const ItemCount = ({initial, stock}) => {
   }
   
   return (
-    <div>
+    <div className='flex justify-between items-center'>
       <div className="flex justify-center p-1">
       <button className="btn btn-error border-solid border-2 border-indigo-600 m-1" onClick={restCount}> - </button>
 
