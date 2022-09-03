@@ -27,6 +27,7 @@ const ItemListContainer = (props) => {
     <div>
       {isLoading ? <h2>Loading...</h2> : <ItemList list={productos}/> }
       {props.contenedor}
+
     
     
     <ItemCount initial={1} stock={5}/>
