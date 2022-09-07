@@ -7,7 +7,6 @@ import { useParams } from 'react-router-dom';
 
 const ItemListContainer = (props) => {
   const [productos, setProductos] = useState([]);
-  const[isLoading, setIsLoading] = useState(true);
 
   const {categoria} = useParams()
 
@@ -26,13 +25,15 @@ const ItemListContainer = (props) => {
     getProdData
     .then((response) => setProductos(response))
     .catch ((err) => console.log (err))
-    .finally(() => setIsLoading(false));
+    return () => {
+      setProductos([])
+    }
   }, [categoria])
   
   return (
 
     <div>
-      {isLoading ? <h1>Loading...</h1> : <ItemList list={productos}/> }
+      {productos.length ? <ItemList list={productos} />: <h1>Loading...</h1>  }
       {props.contenedor}
 
     

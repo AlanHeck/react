@@ -6,7 +6,7 @@ function NavBar() {
   return (
     <div className="navbar bg-blue-700">
         <div className="flex-1">
-          <Link to={process.env.PUBLIC_URL + '/'} className="btn btn-ghost normal-case text-xl">Heck Burgers</Link>
+          <Link to={'/'} className="btn btn-ghost normal-case text-xl">Heck Burgers</Link>
         </div>
         <div className="flex-none">
           <div className="dropdown dropdown-end">
