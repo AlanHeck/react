@@ -1,7 +1,7 @@
 import {React, useState} from 'react'
 
 
-const ItemCount = ({initial, stock}) => {
+const ItemCount = ({initial, stock, onAdd}) => {
   const [count, setCount] = useState(initial);
 
   const addCount = () => {
@@ -24,6 +24,7 @@ const ItemCount = ({initial, stock}) => {
 
       <button className="btn btn-accent border-solid border-2 border-indigo-600 m-1" onClick={addCount}> + </button>
       </div>
+      <button className="btn btn-primary" onClick={ () => onAdd(count)}>Agregar al carrito</button>
     </div>
   )
 }

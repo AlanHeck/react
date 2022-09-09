@@ -17,7 +17,7 @@ const [productos, setProductos] = useState()
    useEffect(() => {
     getProdData()
     .then(response => setProductos(response))
-   },[])
+   },[id])
 
 
 

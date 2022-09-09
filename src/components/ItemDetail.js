@@ -1,8 +1,17 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { Link } from 'react-router-dom';
 import ItemCount from './ItemCount';
 
 function ItemDetail({producto}) {
   const {img, nombre, descripcion, stock, precio} = producto
+
+  const [terminar, setTerminar] = useState(false);
+
+  const onAdd = (count) => {
+    setTerminar(true)
+  console.log (count)
+
+  }
   return (
     <div>
          <div className="card w-96 bg-base-100 shadow-xl">
@@ -12,9 +21,14 @@ function ItemDetail({producto}) {
           <p>{descripcion}</p>
           <p>$ {precio}</p>
           <p>Stock {stock}</p>
-      <ItemCount initial={1} stock={stock}/>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Agregar al carrito</button>
+            {terminar ?(<Link to="/cart">
+            <button className="btn btn-primary">Terminar compra</button></Link>)
+            : (
+              <ItemCount initial={1} stock={stock} onAdd={onAdd}/>
+
+            )
+            }
           </div>
         </div>
       </div>
