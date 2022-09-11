@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import ItemCount from './ItemCount';
 
 function ItemDetail({producto}) {
-  const {img, nombre, descripcion, stock, precio} = producto
+  const {img, nombre, descripcion, stock, precio, id} = producto
 
   const [terminar, setTerminar] = useState(false);
 
@@ -22,10 +22,10 @@ function ItemDetail({producto}) {
           <p>$ {precio}</p>
           <p>Stock {stock}</p>
           <div className="card-actions justify-end">
-            {terminar ?(<Link to="/cart">
+            {terminar ? (<Link to="/cart">
             <button className="btn btn-primary">Terminar compra</button></Link>)
             : (
-              <ItemCount initial={1} stock={stock} onAdd={onAdd}/>
+              <ItemCount initial={1} stock={stock} onAdd={onAdd} id={id}/>
 
             )
             }
