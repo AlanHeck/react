@@ -4,7 +4,7 @@ const CartContext = createContext()
 
 export const useCartContext = () => useContext(CartContext)
 
-const CartContextProvider = ({children}) => {
+const CartContextProvider = ({ children }) => {
   //Lógica
   const [cart, setCart] = useState([])
 
@@ -12,16 +12,16 @@ const CartContextProvider = ({children}) => {
   const isInCart = (id) => cart.find((producto) => producto.id === id)
 
   //Agregar item al carrito
-    const addToCart = (producto, cantidad) => {
+  const addToCart = (producto, cantidad) => {
     const newCart = [...cart]
-    
+
     const productoEnCart = isInCart(producto.id)
 
-    if(productoEnCart){
-        newCart[newCart.findIndex(producto => producto.id === productoEnCart.id)].quantity += cantidad
+    if (productoEnCart) {
+      newCart[newCart.findIndex(producto => producto.id === productoEnCart.id)].quantity += cantidad
 
-    setCart(newCart)
-    return
+      setCart(newCart)
+      return
     }
 
     producto.quantity = cantidad
@@ -29,36 +29,47 @@ const CartContextProvider = ({children}) => {
 
   }
 
-    //Borrar del carrito
-    const deleteFromCart= (producto) => {
-        const newCart= [...cart]
+  //Borrar del carrito
+  const deleteFromCart = (producto) => {
+    const newCart = [...cart]
 
-        const productoEnCart = isInCart(producto.id)
+    const productoEnCart = isInCart(producto.id)
 
-        if(!productoEnCart){
-            return
-        }
-
-        const deleteProduct = newCart.filter((prod) => prod.id !== producto.id)
-
-        setCart(deleteProduct)
+    if (!productoEnCart) {
+      return
     }
 
-    //Vaciar carrito
-    const deleteCart = () => setCart([])
+    const deleteProduct = newCart.filter((prod) => prod.id !== producto.id)
 
-    console.log (cart)
+    setCart(deleteProduct)
+  }
+
+  //Vaciar carrito
+  const deleteCart = () => setCart([])
+
+  //Total de productos
+  const totalProducts = () => cart.reduce((collector, producto) => collector + producto.quantity, 0)
+
+  //Precio Total
+  const totalPrice = () => {
+    return cart.reduce((prev, act) => prev + act.quantity * act.precio, 0)
+  }
+
+  console.log(cart)
 
 
   return (
     <CartContext.Provider value={{
-        cart,
-        addToCart,
-        deleteFromCart,
-        deleteCart,
-        setCart,
-    }}> 
-       {children} </CartContext.Provider>
+      cart,
+      addToCart,
+      deleteFromCart,
+      deleteCart,
+      setCart,
+      totalProducts,
+      totalPrice,
+
+    }}>
+      {children} </CartContext.Provider>
   )
 }
 

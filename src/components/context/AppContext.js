@@ -5,24 +5,24 @@ const AppContext = createContext()
 
 export const useAppContext = () => useContext(AppContext)
 
-const AppContextProvider = ({children}) => {
-    const [productos, setProductos] = useState([])
+const AppContextProvider = ({ children }) => {
+  const [productos, setProductos] = useState([])
 
-  useEffect(() =>{
-    const getProdData = new Promise ((resp) => {
-        resp(dataProductos)
+  useEffect(() => {
+    const getProdData = new Promise((resp) => {
+      resp(dataProductos)
     }, 2000)
     getProdData
-    .then((resp) => setProductos(resp))
+      .then((resp) => setProductos(resp))
     return () => {
       setProductos([])
     }
-  },[]
+  }, []
   )
 
-  return <AppContext.Provider value = {{productos}}>{children}</AppContext.Provider>
-    
-  
+  return <AppContext.Provider value={{ productos }}>{children}</AppContext.Provider>
+
+
 }
 
 export default AppContextProvider
