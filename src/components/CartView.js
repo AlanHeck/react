@@ -26,7 +26,7 @@ export const CartView = () => {
     return (
       <div>
         {cart.map((producto) => (
-          <div>
+          <div key={producto.id}>
             <div className="overflow-x-auto w-full">
               <table className="table w-full">
                 <thead>
@@ -43,7 +43,7 @@ export const CartView = () => {
                       <div className="flex items-center space-x-3">
                         <div className="avatar">
                           <div className="mask mask-squircle w-12 h-12">
-                            <img src={producto.img} alt="Avatar Tailwind CSS Component" />
+                            <img src={producto.img} alt={producto.nombre} />
                           </div>
                         </div>
                         <div>

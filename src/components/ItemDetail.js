@@ -9,6 +9,7 @@ function ItemDetail({ producto }) {
 
   const onAdd = (count) => {
     setTerminar(true)
+    console.log(count)
 
   }
   return (
@@ -21,8 +22,8 @@ function ItemDetail({ producto }) {
           <p>$ {precio}</p>
           <p>Stock {stock}</p>
           <div className="card-actions justify-end">
-            {terminar ? (<Link to="/cart">
-              <button className="btn btn-primary">Terminar compra</button></Link>)
+            {terminar ? (<Link to="/cart"
+              className="btn btn-primary">Terminar compra</Link>)
               : (
                 <ItemCount initial={1} stock={stock} onAdd={onAdd} id={id} />
 
