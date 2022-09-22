@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import dataProductos from '../data/dataProductos';
+//import dataProductos from '../data/dataProductos';
 import ItemList from './ItemList';
 import { useParams } from 'react-router-dom';
+import { collection, getDocs, query, where } from 'firebase/firestore'
+import { db } from '../firebase/Firebase';
+
 
 
 
@@ -11,7 +14,7 @@ const ItemListContainer = (props) => {
   const { categoria } = useParams()
 
 
-  useEffect(() => {
+  {/* useEffect(() => {
     const getProdData = new Promise((resolve, reject) => {
       if (categoria) {
         setTimeout(() => {
@@ -28,6 +31,28 @@ const ItemListContainer = (props) => {
     return () => {
       setProductos([])
     }
+  }, [categoria])*/}
+
+
+  useEffect(() => {
+    //evalua si existe categoria
+    const q = categoria
+      ? query(collection(db, 'productos'), where('categoria', '==', categoria))
+      : collection(db, 'productos')
+
+    //pedido a firebase
+    getDocs(q)
+      .then((res) => {
+        const lista = res.docs.map((producto) => {
+          return {
+            id: producto.id,
+            ...producto.data()
+          }
+        })
+        setProductos(lista)
+      }
+      )
+
   }, [categoria])
 
   return (

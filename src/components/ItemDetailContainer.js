@@ -1,26 +1,43 @@
 import React, { useState, useEffect } from 'react'
 import ItemDetail from './ItemDetail'
-import dataProductos from '../data/dataProductos';
+//import dataProductos from '../data/dataProductos';
 import { useParams } from 'react-router-dom';
+import { db } from '../firebase/Firebase';
+import { collection, doc, getDoc } from 'firebase/firestore';
 
 
 function ItemDetailContainer() {
 
   const { id } = useParams()
 
-  const [productos, setProductos] = useState()
+  const [productos, setProductos] = useState({})
 
 
-  const getProdData = () => new Promise((resolve) => {
+  { /*const getProdData = () => new Promise((resolve) => {
     setTimeout(() => resolve(dataProductos.find(producto => producto.id === Number(id))), 2000)
   })
 
   useEffect(() => {
     getProdData()
       .then(response => setProductos(response))
+  }, [id])*/}
+
+  useEffect(() => {
+    //se le avisa nuestra base de datos y en que coleccion está
+    const coleccionProductos = collection(db, 'productos')
+
+    //referencia que tiene que traer (id)
+    const referenciaDoc = doc(coleccionProductos, id)
+
+    //se trae un solo documento
+    getDoc(referenciaDoc)
+      .then((res) => {
+        setProductos({
+          id: res.id,
+          ...res.data()
+        })
+      })
   }, [id])
-
-
 
   return (
     <div className='flex justify-center m-1 ' >{productos ? < ItemDetail producto={productos} /> : <button disabled type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center">
