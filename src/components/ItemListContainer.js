@@ -14,33 +14,12 @@ const ItemListContainer = (props) => {
   const { categoria } = useParams()
 
 
-  {/* useEffect(() => {
-    const getProdData = new Promise((resolve, reject) => {
-      if (categoria) {
-        setTimeout(() => {
-          resolve(dataProductos.filter(item => item.categoria === categoria));
-          reject("salio mal");
-        }, 2000);
-      } else {
-        setTimeout(() => resolve(dataProductos), 2000)
-      }
-    });
-    getProdData
-      .then((response) => setProductos(response))
-      .catch((err) => console.log(err))
-    return () => {
-      setProductos([])
-    }
-  }, [categoria])*/}
-
-
   useEffect(() => {
     //evalua si existe categoria
     const q = categoria
       ? query(collection(db, 'productos'), where('categoria', '==', categoria))
       : collection(db, 'productos')
 
-    //pedido a firebase
     getDocs(q)
       .then((res) => {
         const lista = res.docs.map((producto) => {

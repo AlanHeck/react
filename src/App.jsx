@@ -6,12 +6,20 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CartContextProvider from './components/context/CartContext';
 import AppContextProvider from './components/context/AppContext';
 import CartView from './components/CartView';
-import EndBuy from './components/EndBuy';
-
+import CheckOut from './components/CheckOut';
+import { addDoc, collection } from 'firebase/firestore';
+import {useEffect} from 'react'
+import { db } from './firebase/Firebase';
+import dataProductos from './data/dataProductos';
 
 
 
 function App() {
+/*useEffect (() =>{
+const productsCollections = collection(db, "productos")
+dataProductos.map((producto)=> addDoc(productsCollections, producto))
+},[])*/
+
   return (
     <>
       <AppContextProvider>
@@ -25,7 +33,7 @@ function App() {
                 <Route path='/categoria/:categoria' element={<ItemListContainer />} />
                 <Route path='/detalles/:id' element={<ItemDetailContainer />} />
                 <Route path='/cart' element={<CartView />} />
-                <Route path='/endBuy' element={<EndBuy />} />
+                <Route path='/checkout' element={<CheckOut />} />
               </Routes>
 
             </div>

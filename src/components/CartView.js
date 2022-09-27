@@ -25,48 +25,44 @@ export const CartView = () => {
 
     return (
       <div>
-        {cart.map((producto) => (
-          <div key={producto.id}>
-            <div className="overflow-x-auto w-full">
-              <table className="table w-full">
-                <thead>
-                  <tr>
-                    <th>Nombre</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div className="flex items-center space-x-3">
-                        <div className="avatar">
-                          <div className="mask mask-squircle w-12 h-12">
-                            <img src={producto.img} alt={producto.nombre} />
-                          </div>
-                        </div>
-                        <div>
-                          <div className="font-bold">{producto.nombre}</div>
-                          <div className="text-sm opacity-50">Stock {producto.stock}</div>
+        <div className="overflow-x-auto w-full">
+          <table className="table w-full">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {cart.map((producto) => (
+                <tr key={producto.id}>
+                  <td>
+                    <div className="flex items-center space-x-3">
+                      <div className="avatar">
+                        <div className="mask mask-squircle w-12 h-12">
+                          <img src={producto.img} alt={producto.nombre} />
                         </div>
                       </div>
-                    </td>
-                    <td>$
-                      {producto.precio}
-                      <br />
-                      <span className="badge badge-ghost badge-sm"></span>
-                    </td>
-                    <td>{producto.quantity}</td>
-                    <th>
-                      <button className="btn btn-error" onClick={() => deleteFromCart(producto)}>Eliminar</button>
-                    </th>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        ))}
+                      <div>
+                        <div className="font-bold">{producto.nombre}</div>
+                        <div className="text-sm opacity-50">Stock {producto.stock}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>$ {producto.precio}</td>
+                  <td>{producto.quantity}</td>
+                  <th>
+                    <button className="btn btn-error" onClick={() => deleteFromCart(producto)}>Eliminar</button>
+                  </th>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+        </div>
+
 
         <div>
           <span className='text-xl'> Precio total: $  {totalPrice()}</span>
@@ -79,7 +75,7 @@ export const CartView = () => {
         </div>
 
         <div>
-          <Link to={"/endBuy"} className="btn btn-success" onClick={() => deleteCart(cart)}>Finalizar compra</Link>
+          <Link to={"/checkout"} className="btn btn-success">Finalizar compra</Link>
         </div>
 
       </div>
