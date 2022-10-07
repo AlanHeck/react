@@ -7,6 +7,7 @@ import CartContextProvider from './components/context/CartContext';
 import AppContextProvider from './components/context/AppContext';
 import CartView from './components/CartView';
 import CheckOut from './components/CheckOut';
+import Footer from './components/footer';
 /*import { addDoc, collection } from 'firebase/firestore';
 import {useEffect} from 'react'
 import { db } from './firebase/Firebase';
@@ -35,6 +36,7 @@ dataProductos.map((producto)=> addDoc(productsCollections, producto))
                 <Route path='/cart' element={<CartView />} />
                 <Route path='/checkout' element={<CheckOut />} />
               </Routes>
+              <Footer/>
 
             </div>
           </BrowserRouter>

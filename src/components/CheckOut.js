@@ -59,8 +59,8 @@ const CheckOut = () => {
             </div>)
             : (
                 <div>
-                    <span className='italic text-4x1 m-5'>Muchas gracias por su compra</span>
-                    <p className='italic text-3x1'>Su orden es: {orderId}</p>
+                    <p className='text-3xl m-5'>Muchas gracias por su compra</p>
+                    <p className='text-3x1'>Su orden es: {orderId}</p>
                     <Link to={"/"} className="btn btn-success">Ir a Home</Link>
                 </div>
             )}
