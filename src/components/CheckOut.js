@@ -38,9 +38,9 @@ const CheckOut = () => {
         }    
     }
     const updateStock = () => {  
-        cart.forEach(item => {
-            const docRef = doc(db, 'productos', item.producto.id)
-            const updateStock = (item.producto.stock + item.cantidad) - item.cantidad;
+        cart.forEach(prod => {
+            const docRef = doc(db, 'productos', prod.producto.id)
+            const updateStock = (prod.producto.stock + prod.cantidad) - prod.cantidad;
             updateDoc(docRef, {
                 stock: updateStock
             })
@@ -59,8 +59,8 @@ const CheckOut = () => {
             </div>)
             : (
                 <div>
-                    <h1>Muchas gracias por su compra</h1>
-                    <h2>Su orden es: {orderId}</h2>
+                    <span className='italic text-4x1 m-5'>Muchas gracias por su compra</span>
+                    <p className='italic text-3x1'>Su orden es: {orderId}</p>
                     <Link to={"/"} className="btn btn-success">Ir a Home</Link>
                 </div>
             )}
