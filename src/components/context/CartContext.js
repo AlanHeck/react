@@ -55,7 +55,6 @@ const CartContextProvider = ({ children }) => {
     return cart.reduce((prev, act) => prev + act.quantity * act.precio, 0)
   }
 
-  console.log(cart)
 
 
   return (

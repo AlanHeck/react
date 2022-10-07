@@ -7,10 +7,10 @@ import CartContextProvider from './components/context/CartContext';
 import AppContextProvider from './components/context/AppContext';
 import CartView from './components/CartView';
 import CheckOut from './components/CheckOut';
-import { addDoc, collection } from 'firebase/firestore';
+/*import { addDoc, collection } from 'firebase/firestore';
 import {useEffect} from 'react'
 import { db } from './firebase/Firebase';
-import dataProductos from './data/dataProductos';
+import dataProductos from './data/dataProductos';*/
 
 
 

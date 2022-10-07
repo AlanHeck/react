@@ -28,7 +28,7 @@ export const CartView = () => {
         <div className="overflow-x-auto w-full">
           <table className="table w-full">
             <thead>
-              <tr>
+              <tr className='italic'>
                 <th>Nombre</th>
                 <th>Precio</th>
                 <th>Cantidad</th>
@@ -51,8 +51,8 @@ export const CartView = () => {
                       </div>
                     </div>
                   </td>
-                  <td>$ {producto.precio}</td>
-                  <td>{producto.quantity}</td>
+                  <td className='italic'>$ {producto.precio}</td>
+                  <td className='italic'>{producto.quantity}</td>
                   <th>
                     <button className="btn btn-error" onClick={() => deleteFromCart(producto)}>Eliminar</button>
                   </th>
@@ -65,7 +65,7 @@ export const CartView = () => {
 
 
         <div>
-          <span className='text-xl'> Precio total: $  {totalPrice()}</span>
+          <span className='text-3xl'> Precio total: $  {totalPrice()}</span>
         </div>
 
         <div className='m-5 flex justify-center'>

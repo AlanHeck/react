@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-//import dataProductos from '../data/dataProductos';
 import ItemList from './ItemList';
 import { useParams } from 'react-router-dom';
 import { collection, getDocs, query, where } from 'firebase/firestore'

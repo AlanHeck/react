@@ -1,4 +1,4 @@
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
+import { addDoc, collection, serverTimestamp, doc, updateDoc} from 'firebase/firestore'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { db } from '../firebase/Firebase'
@@ -33,9 +33,18 @@ const CheckOut = () => {
             .then((res) => {
                 setOrderId(res.id);
                 deleteCart();
+                updateStock();
                 })
-                .catch((error) => console.log(error))
-        }
+        }    
+    }
+    const updateStock = () => {  
+        cart.forEach(item => {
+            const docRef = doc(db, 'productos', item.producto.id)
+            const updateStock = (item.producto.stock + item.cantidad) - item.cantidad;
+            updateDoc(docRef, {
+                stock: updateStock
+            })
+        })
     }
     return (
         <>{!orderId ? (
