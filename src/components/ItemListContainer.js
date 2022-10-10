@@ -43,7 +43,7 @@ const ItemListContainer = (props) => {
         </svg>
         Loading...
       </button>}
-      {props.contenedor}
+
 
 
 
