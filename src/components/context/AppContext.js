@@ -20,7 +20,7 @@ const AppContextProvider = ({ children }) => {
     const q = categoria
       ? query(collection(db, 'productos'), where('categoria', '==', categoria))
       : collection(db, 'productos')
-      
+
     getDocs(q)
       .then((res) => {
         const lista = res.docs.map((producto) => {
@@ -35,7 +35,7 @@ const AppContextProvider = ({ children }) => {
 
   }, [categoria])
 
-  
+
 
   return <AppContext.Provider value={{ productos }}>{children}</AppContext.Provider>
 

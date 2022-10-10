@@ -14,7 +14,7 @@ export const CartView = () => {
         <div className="alert alert-error shadow-lg">
           <div>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-current flex-shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            <span>Carrito vacio, vea nuestros productos aqui
+            <span>Carrito vacio, vea nuestros productos aqui:
               <Link to={'/'} className="btn btn-accent normal-case text-xl m-4">Heck Burgers</Link>
             </span>
           </div>
@@ -36,25 +36,27 @@ export const CartView = () => {
               </tr>
             </thead>
             <tbody>
-              {cart.map((producto) => (
-                <tr key={producto.id}>
+              {cart.map((orden) => (
+                <tr key={orden.producto.id}>
                   <td>
                     <div className="flex items-center space-x-3">
                       <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
-                          <img src={producto.img} alt={producto.nombre} />
+                          <img src={orden.producto.img} alt={orden.producto.nombre} />
                         </div>
                       </div>
                       <div>
-                        <div className="font-bold">{producto.nombre}</div>
-                        <div className="text-sm opacity-50">Stock {producto.stock}</div>
+                        <div className="font-bold">{orden.producto.nombre}</div>
+                        <div className="text-sm opacity-50">Stock {orden.producto.stock}</div>
                       </div>
                     </div>
                   </td>
-                  <td className='italic'>$ {producto.precio}</td>
-                  <td className='italic'>{producto.quantity}</td>
+                  <td className='italic'>$ {orden.producto.precio}</td>
+                  <td className='italic'>{orden.quantity}</td>
                   <th>
-                    <button className="btn btn-error" onClick={() => deleteFromCart(producto)}>Eliminar</button>
+                    <button className="btn btn-error" onClick={() => deleteFromCart(orden.producto)}>Eliminar
+
+                    </button>
                   </th>
                 </tr>
               ))}
@@ -69,12 +71,12 @@ export const CartView = () => {
         </div>
 
         <div className='m-5 flex justify-center'>
-          <button className="btn btn-error mx-5" onClick={() => deleteCart(cart)}>Vaciar carrito</button>
+          <button className="btn btn-error mx-5" onClick={() => deleteCart()}>Vaciar carrito</button>
 
           <Link to={"/"} className="btn btn-success">Seguir comprando</Link>
         </div>
 
-        <div>
+        <div className='flex justify-center m-5'>
           <Link to={"/checkout"} className="btn btn-success">Finalizar compra</Link>
         </div>
 

@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 
 function NavBar() {
   return (
-    <div className="navbar bg-blue-700">
+    <div className="navbar bg-primary">
       <div className="flex-1">
-        <Link to={'/'} className="btn btn-ghost normal-case text-xl">Heck Burgers</Link>
+        <Link to={'/'} className="btn btn-ghost normal-case text-xl  italic font-bold">Heck Burgers</Link>
       </div>
       <div className="flex-none">
         <CartWidget />
@@ -17,7 +17,7 @@ function NavBar() {
               <img src="/Images/hamburguesa1.jpg" />
             </div>
           </label>
-          <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+          <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-orange-600 rounded-box w-52 italic font-bold">
             <li>
               <Link to={'/'} className="justify-between">
                 Home

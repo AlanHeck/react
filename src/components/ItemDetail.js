@@ -14,7 +14,7 @@ function ItemDetail({ producto }) {
   }
   return (
     <div>
-      <div className="card w-96 bg-base-100 shadow-xl">
+      <div className="card w-96 bg-blue-100 shadow-xl m-5 italic">
         <figure><img src={img} alt={nombre} /></figure>
         <div className="card-body">
           <h2 className="card-title">{nombre}</h2>

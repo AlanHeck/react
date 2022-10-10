@@ -26,7 +26,7 @@ dataProductos.map((producto)=> addDoc(productsCollections, producto))
       <AppContextProvider>
         <CartContextProvider>
           <BrowserRouter>
-            <div className="App">
+            <div className="App bg-orange-100 ">
 
               <NavBar />
               <Routes>
