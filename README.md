@@ -9,7 +9,7 @@ Este proyecto ha sido desplegado mediante Vercel, a continuación dejo el link p
 
 https://heckburgers.vercel.app/
 
-![](https://firebasestorage.googleapis.com/v0/b/mi-primer-react-444a3.appspot.com/o/HeckBurger1.gif?alt=media&token=e23b337e-25e5-4cd2-b0dd-78b8c55fdf6c)
+![](/public/HeckBurger1.gif)
 
 
 ## Contenidos
@@ -25,7 +25,7 @@ https://heckburgers.vercel.app/
 
 ## Información
 
-Proyecto final del curso de Reacto Js para entregarlo a CoderHouse.
+Proyecto final del curso de React Js para entregarlo a CoderHouse.
 
 
 ## Tecnologías
