@@ -20,9 +20,8 @@ const ItemCount = ({ initial, stock, onAdd, id }) => {
   const restCount = () => {
     if (count > initial) {
       setCount(count - 1);
-    } else {
-      setCount(0);
-    }
+    } 
+    
 
   }
 
