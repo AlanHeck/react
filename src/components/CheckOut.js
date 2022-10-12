@@ -29,6 +29,7 @@ const CheckOut = () => {
         e.preventDefault()
         if (Object.values(comprador).length !== 3) {
             sweetAlert()
+//crea ticket de compra            
         } else {
             const ventasCollection = collection(db, "ventas")
             addDoc(ventasCollection, {
@@ -43,8 +44,9 @@ const CheckOut = () => {
                     updateStock();
                 })
         }
-
     }
+
+    //Descuenta stock de firebase
     const updateStock = () => {
         cart.forEach(orden => {
             const docRef = doc(db, 'productos', orden.producto.id)
@@ -59,10 +61,13 @@ const CheckOut = () => {
             <div className="m-5">
                 <p className='text-3xl m-5'>Complete sus datos para la facuración:</p>
                 <form onSubmit={finalizarCompra} className="m-5">
-                    <p className='text-2xl'>Nombre completo:<input type="text" placeholder='Nombre y apellido' name='name' onChange={datosComprador} className="input input-bordered m-5" ></input></p>
-                    <p className='text-2xl'> Numero de tel:<input type="number" placeholder='Numero de telefono' name='phone' onChange={datosComprador} className="input input-bordered m-5" ></input></p>
-                    <p className='text-2xl'>Email:<input type="email" placeholder='info@site.com' name='email' onChange={datosComprador} className="input input-bordered m-5" ></input></p>
-                    <button type='submit' className="btn btn-success m-5">Comprar</button>
+                    <p className='text-2xl'>Nombre completo:</p>
+                    <input type="text" placeholder='Nombre y apellido' name='name' onChange={datosComprador} className="input input-bordered mb-5" ></input>
+                    <p className='text-2xl'> Numero de tel:</p>
+                    <input type="number" placeholder='Numero de telefono' name='phone' onChange={datosComprador} className="input input-bordered mb-5" ></input>
+                    <p className='text-2xl'>Email:</p>
+                    <input type="email" placeholder='info@site.com' name='email' onChange={datosComprador} className="input input-bordered mb-5" ></input>
+                    <div><button type='submit' className="btn btn-success">Comprar</button></div>
                 </form>
             </div>)
             : (

@@ -18,7 +18,7 @@ const CartContextProvider = ({ children }) => {
     const ordenInCart = findInCart(producto.id)
 
     if (ordenInCart) {
-      newCart[newCart.findIndex(producto => producto.id === ordenInCart.producto.id)].quantity += cantidad
+      newCart[newCart.findIndex(orden => orden.producto.id === ordenInCart.producto.id)].quantity += cantidad
 
       setCart(newCart)
       return
