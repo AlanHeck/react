@@ -29,7 +29,7 @@ const CheckOut = () => {
         e.preventDefault()
         if (Object.values(comprador).length !== 3) {
             sweetAlert()
-//crea ticket de compra            
+            //crea ticket de compra            
         } else {
             const ventasCollection = collection(db, "ventas")
             addDoc(ventasCollection, {
