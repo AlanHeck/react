@@ -2,7 +2,7 @@ import { React, useState } from 'react'
 import { useCartContext } from '../components/context/CartContext'
 import { useAppContext } from '../components/context/AppContext'
 import { Link } from 'react-router-dom';
-import Swal from 'sweetalert2';
+
 
 
 
@@ -36,15 +36,6 @@ const ItemCount = ({ initial, stock, onAdd, id }) => {
 
     addToCart(findProducto, cantidad)
     onAdd(count)
-    Swal.fire({
-      text: 'Producto agregado al carrito',
-      target: '#custom-target',
-      customClass: {
-        container: 'position-absolute'
-      },
-      toast: true,
-      position: 'top-right'
-    })
 
   }
 
